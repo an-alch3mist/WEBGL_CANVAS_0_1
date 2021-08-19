@@ -149,6 +149,7 @@ function UnityProgress(gameInstance, progress)
 <br>
 
 
+![alt_txt](WEBGL_CANVAS_0_1_LOADING.PNG)
 
 ```css
                 ._BOX_0
@@ -214,7 +215,14 @@ function UnityProgress(gameInstance, progress)
                         /*
                         --_a: hsla(120, 00%, 100%, 1);
                         --_b: hsla(360, 50%, 50%, 1);
-                        background: repeating-linear-gradient(-45deg, var(--_a) 0, var(--_a) 5px, var(--_b) 5px, var(--_b) 12px);
+                        background: repeating-linear-gradient
+                        (
+                        -45deg,
+                        var(--_a) 0,
+                        var(--_a) 5px,
+                        var(--_b) 5px,
+                        var(--_b) 12px
+                        );
                         */
                         border-right: 2px solid #eee;
                         position: relative;
