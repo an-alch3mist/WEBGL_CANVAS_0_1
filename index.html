@@ -219,10 +219,13 @@
         <script type="text/javascript">
                 function _progress_(x)
                 {
+
+                        let _load = Math.floor(x * 100).toString() + "%";
+
                         if (x == 1)
                         {
                                 document.querySelector("._BOX_0_0_0_0").style.width = (x * 100).toString() + "%";
-                                document.querySelector("._BOX_0_0_0_0").setAttribute("_attr", (x * 100).toString() + "%");
+                                document.querySelector("._BOX_0_0_0_0").setAttribute("_attr", _load);
 
                                 setTimeout(function()
                                 {
@@ -236,7 +239,7 @@
                         else
                         {
                                 document.querySelector("._BOX_0_0_0_0").style.width = (x * 100).toString() + "%";
-                                document.querySelector("._BOX_0_0_0_0").setAttribute("_attr", (x * 100).toString() + "%");
+                                document.querySelector("._BOX_0_0_0_0").setAttribute("_attr", _load);
                         }
                 }
 
