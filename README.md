@@ -63,9 +63,14 @@
                 let _load = Math.floor(x * 100).toString() + "%";
                 if (x == 1)
                 {
-                        document.querySelector("._BOX_0_0_0_0").style.width = (x * 100).toString() + "%";
-                        document.querySelector("._BOX_0_0_0_0").setAttribute("_attr", _load);
-                        document.querySelector("._BOX_0_0_1_0").innerHTML = "loading... " + x.toFixed(2).toString();
+                        document.querySelector("._BOX_0_0_0_0").style.width = 
+                           (x * 100).toString() + "%";
+                        document.querySelector("._BOX_0_0_0_0").setAttribute(
+                           "_attr", _load);
+                        document.querySelector("._BOX_0_0_1_0").innerHTML = 
+                           "loading... " + x.toFixed(2).toString();
+                        
+                        
                         setTimeout(function()
                         {
                                 document.querySelector("._BOX_0").style.display = "none";
@@ -74,9 +79,14 @@
                 }
                 else
                 {
-                        document.querySelector("._BOX_0_0_0_0").style.width = (x * 100).toString() + "%";
-                        document.querySelector("._BOX_0_0_0_0").setAttribute("_attr", _load);
-                        document.querySelector("._BOX_0_0_1_0").innerHTML = "loading... " + x.toFixed(2).toString();
+                        document.querySelector("._BOX_0_0_0_0").style.width = 
+                           (x * 100).toString() + "%";
+                        document.querySelector("._BOX_0_0_0_0").setAttribute(
+                           "_attr", _load);
+                        document.querySelector("._BOX_0_0_1_0").innerHTML = 
+                           "loading... " + x.toFixed(2).toString();
+                        
+                        
                 }
         }
 
