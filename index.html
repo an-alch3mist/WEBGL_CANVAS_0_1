@@ -126,7 +126,7 @@
 
                 ._BOX_0_0_0_0::after
                 {
-                        content: "100%";
+                        content: attr(_attr);
                         width: 2.2rem;
                         /*  height: 0.8rem;*/
 
@@ -191,7 +191,8 @@
         <div class="_BOX_0">
                 <div class="_BOX_0_0">
                         <div class="_BOX_0_0_0">
-                                <div class="_BOX_0_0_0_0"> </div>
+                                <div class="_BOX_0_0_0_0" _attr="90%">
+                                </div>
                         </div>
                         <div class="_BOX_0_0_1">
                                 <div class="_BOX_0_0_1_0">
@@ -221,6 +222,7 @@
                         if (x == 1)
                         {
                                 document.querySelector("._BOX_0_0_0_0").style.width = (x * 100).toString() + "%";
+                                document.querySelector("._BOX_0_0_0_0").setAttribute("_attr", (x * 100).toString() + "%");
 
                                 setTimeout(function()
                                 {
