@@ -1,5 +1,5 @@
 ```css
-                .webgl-content
+               ._content
                 {
                         transform: none !important;
                         left: 0px !important;
@@ -38,7 +38,7 @@
 <br>
 
 ```html
-        <div class="webgl-content">
+        <div class="webgl-content _content">
                 <div id="gameContainer" class="_container" style="width: 1000px; height: 300px">
 
 
