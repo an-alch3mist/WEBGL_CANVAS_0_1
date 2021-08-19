@@ -1,0 +1,13 @@
+{
+"companyName": "DefaultCompany",
+"productName": "IO_web_1_1",
+"dataUrl": "default_1000_500.data.unityweb",
+"wasmCodeUrl": "default_1000_500.wasm.code.unityweb",
+"wasmFrameworkUrl": "default_1000_500.wasm.framework.unityweb",
+"TOTAL_MEMORY": 268435456,
+"graphicsAPI": ["WebGL 2.0", "WebGL 1.0"],
+"webglContextAttributes": {"preserveDrawingBuffer": false},
+"splashScreenStyle": "Dark",
+"backgroundColor": "#333333",
+"cacheControl": {"default": "must-revalidate"}
+}
