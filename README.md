@@ -37,7 +37,6 @@
 
 <br>
 
-
 ```html
         <div class="webgl-content">
                 <div id="gameContainer" class="_container" style="width: 1000px; height: 300px">
@@ -57,6 +56,7 @@
 <br>
 <br>
 <br>
+
 ```html
         <script type="text/javascript">
                 function _progress_(x)
@@ -88,6 +88,8 @@
 
 <br>
 <br>
+<br>
+<br>
 
 ```js
 function UnityProgress(gameInstance, progress)
@@ -100,8 +102,10 @@ function UnityProgress(gameInstance, progress)
             gameInstance.logo = document.createElement("div");
             gameInstance.logo.className = "logo " + gameInstance.Module.splashScreenStyle;
 
-            //            gameInstance.container.appendChild(gameInstance.logo);
 
+            //.......................
+            //            gameInstance.container.appendChild(gameInstance.logo);
+            //.......................
 
       }
 
@@ -117,13 +121,21 @@ function UnityProgress(gameInstance, progress)
 
             gameInstance.progress.appendChild(gameInstance.progress.full);
 
+
+            //.......................
             //          gameInstance.container.appendChild(gameInstance.progress);
+            //.......................
+
 
       }
 
-      //
+
+
+      //.......................
       _progress_(progress);
-      //
+      //.......................
+
+
 
 
       gameInstance.progress.full.style.width = (100 * progress) + "%";
