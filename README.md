@@ -63,6 +63,7 @@
              if (x == 1)
              {
                      document.querySelector("._BOX_0_0_0_0").style.width = (x * 100).toString() + "%";
+                     document.querySelector("._BOX_0_0_0_0").setAttribute("_attr", (x * 100).toString() + "%");
                      setTimeout(function()
                      {
                              document.querySelector("._BOX_0").style.display = "none";
