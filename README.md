@@ -57,31 +57,23 @@
 <br>
 <br>
 
-```html
-        <script type="text/javascript">
-                function _progress_(x)
-                {
-                        if (x == 1)
-                        {
-                                document.querySelector("._BOX_0_0_0_0").style.width = (x * 100).toString() + "%";
-
-                                setTimeout(function()
-                                {
-                                        document.querySelector("._BOX_0").style.display = "none";
-                                }, 50);
-
-                                //
-
-
-                        }
-                        else
-                        {
-                                document.querySelector("._BOX_0_0_0_0").style.width = (x * 100).toString() + "%";
-
-                        }
-                }
-
-        </script>
+```js
+     function _progress_(x)
+     {
+             if (x == 1)
+             {
+                     document.querySelector("._BOX_0_0_0_0").style.width = (x * 100).toString() + "%";
+                     setTimeout(function()
+                     {
+                             document.querySelector("._BOX_0").style.display = "none";
+                     }, 50);
+                     //
+             }
+             else
+             {
+                     document.querySelector("._BOX_0_0_0_0").style.width = (x * 100).toString() + "%";
+             }
+     }
 
 ```
 
