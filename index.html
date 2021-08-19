@@ -112,7 +112,7 @@
                 ._BOX_0_0_0_0
                 {
                         height: 100%;
-                        width: 20%;
+                        width: 0%;
                         background-color: var(--c);
 
                         /*
@@ -196,7 +196,7 @@
                         </div>
                         <div class="_BOX_0_0_1">
                                 <div class="_BOX_0_0_1_0">
-                                        loading... 0.12
+                                        loading... 0.00
                                 </div>
                         </div>
                 </div>
@@ -224,10 +224,12 @@
 
                         if (x == 1)
                         {
-                                document.querySelector("._BOX_0_0_0_0").style.width = (x * 100).toString() + "%";
+                                document.querySelector("._BOX_0_0_0_0").style.width =
+                                        (x * 100).toString() + "%";
                                 document.querySelector("._BOX_0_0_0_0").setAttribute("_attr", _load);
 
-                                document.querySelector("._BOX_0_0_1_0").innerHTML = "loading... " + x.toFixed(2).toString();
+                                document.querySelector("._BOX_0_0_1_0").innerHTML =
+                                        "loading... " + x.toFixed(2).toString();
 
 
 
@@ -246,7 +248,8 @@
                                 document.querySelector("._BOX_0_0_0_0").style.width = (x * 100).toString() + "%";
                                 document.querySelector("._BOX_0_0_0_0").setAttribute("_attr", _load);
 
-                                document.querySelector("._BOX_0_0_1_0").innerHTML = "loading... " + x.toFixed(2).toString();
+                                document.querySelector("._BOX_0_0_1_0").innerHTML =
+                                        "loading... " + x.toFixed(2).toString();
 
                         }
                 }
