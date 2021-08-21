@@ -222,7 +222,7 @@
                         _loading_bar = document.querySelector("._BOX_0_0_0_0");
                         _loading_status = document.querySelector("._BOX_0_0_1_0");
 
-
+                        _loading_bar.style.width = "1px";
                         _loading_status.innerHTML = "preparing";
                         //_a_track_0 = 0;
                         //_wait_till_loading_0 = 0;
@@ -257,7 +257,7 @@
                                 [
                                         // keyframes
                                         {
-                                                width: _loading_bar.getBoundingClientRect().width + "px"
+                                                width: _loading_bar.style.width + "px"
                                         },
                                         {
                                                 width: (_value * 100).toString() + "%"
