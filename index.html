@@ -246,6 +246,7 @@
                 let _BOX_0;
                 let _BOX_0_0_0_0;
                 let _BOX_0_0_1_0;
+                let index_ = 0;
                 INITIALIZE();
 
 
@@ -294,6 +295,7 @@
                         {
                                 //  fillText.textContent = "extracting...";
                                 _BOX_0_0_1_0.innerHTML = "extracting...";
+                                _BOX_0_0_0_0.setAttribute("_attr", "extr");
                                 return;
                         }
 
@@ -306,6 +308,8 @@
                                         str += ".";
                                 _BOX_0_0_1_0.innerHTML = str;
                                 index_ += 1;
+
+                                _BOX_0_0_0_0.setAttribute("_attr", "start");
                         }
                         else if (v >= 5 && v <= 100)
                         {
@@ -323,6 +327,8 @@
                                 str += ")";
 
                                 _BOX_0_0_1_0.innerHTML = str;
+                                _BOX_0_0_0_0.setAttribute("_attr", "load");
+
                         }
 
 
