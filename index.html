@@ -248,7 +248,7 @@
                         _loading = x;
 
                         //
-                        if (_loading < 0.1)
+                        if (_loading < 0.05)
                         {
                                 _loading_bar.style.width = "2px";
                                 _loading_status.innerHTML = "preparing..";
@@ -256,10 +256,10 @@
                         }
 
                         //
-                        else if (_loading >= 0.1 && _loading <= 0.9)
+                        else if (_loading >= 0.05 && _loading <= 0.9)
                         {
 
-                                _value = (_loading - 0.1) / (0.9 - 0.1);
+                                _value = (_loading - 0.05) / (0.9 - 0.05);
                                 if (_value > 1.0)
                                 {
                                         _value = 1.0;
