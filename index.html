@@ -259,7 +259,7 @@
 
                         _loading_status.innerHTML = "loading... " +
                                 (_loading_bar.offsetWidth / 209).toFixed(2);
-                        _loading_bar.setAttribute("_attr", (_loading_bar.offsetWidth / 209 * 100).toString());
+                        _loading_bar.setAttribute("_attr", Math.floor(_loading_bar.offsetWidth / 209 * 100).toString());
                 }
 
 
