@@ -226,7 +226,7 @@
                         _loading_status.innerHTML = "preparing";
                         //_a_track_0 = 0;
                         //_wait_till_loading_0 = 0;
-                        //wait_till_loading();
+                        wait_till_loading();
 
                 }
 
@@ -239,95 +239,111 @@
 
                 let _animate;
                 let new_animate;
+                //INITIALIZE();
 
 
                 let start = true;
 
-                let _BOX_0;
-                let _BOX_0_0_0_0;
-                let _BOX_0_0_1_0;
-                let index_ = 0;
-                INITIALIZE();
-
-
-
                 function _LOADING_(x)
                 {
-                        let value_ = x;
-                        if (value_ == 1)
-                        {
-                                _BOX_0.style.display = "none";
-                                return;
-                        }
-
-
-
                         if (start)
                         {
-                                _BOX_0 = document.querySelector("._BOX_0");
-                                _BOX_0_0_0_0 = document.querySelector("._BOX_0_0_0_0");
-                                _BOX_0_0_1_0 = document.querySelector("._BOX_0_0_1_0");
-
+                                _loading_bar = document.querySelector("._BOX_0_0_0_0");
+                                _loading_status = document.querySelector("._BOX_0_0_1_0");
                                 start = false;
                         }
 
-
-                        var v = (value_ / 0.88 * 100);
-                        if (v >= 100) v = 100;
-
-
-                        _BOX_0_0_0_0.animate(
+                        _loading_bar.animate(
                                 [
+                                        // keyframes
                                         {
-                                                width: _BOX_0_0_0_0.style.width
+                                                width: _loading_bar.style.width
                                         },
                                         {
-                                                width: v + "%"
+                                                width: (_value * 100).toString() + "%"
                                         }
-
                                 ],
                                 {
-                                        duration: 700,
-                                        fill: "forwards"
+                                        // timing options
+                                        fill: 'forwards',
+                                        duration: 900,
+                                        easing: 'ease-in-out',
+
                                 }
                         );
-                        if (value_ > 0.88)
+                }
+
+
+
+
+
+
+                function _LOADING_1(x)
+                {
+                        _loading = x;
+
+                        _value = (_loading - 0) / (0.9 - 0);
+                        if (_value > 1.0)
                         {
-                                //  fillText.textContent = "extracting...";
-                                _BOX_0_0_1_0.innerHTML = "extracting...";
-                                _BOX_0_0_0_0.setAttribute("_attr", "extr");
-                                return;
+                                _value = 1.0;
+                        }
+
+                        _animate = _loading_bar.animate(
+                                [
+                                        // keyframes
+                                        {
+                                                width: _loading_bar.style.width
+                                        },
+                                        {
+                                                width: (_value * 100).toString() + "%"
+                                        }
+                                ],
+                                {
+                                        // timing options
+                                        fill: 'forwards',
+                                        duration: 900,
+                                        easing: 'ease-in-out',
+
+                                }
+                        );
+
+
+
+                        //
+                        if (_loading < 0.05)
+                        {
+                                _loading_status.innerHTML = "preparing..";
+                                _loading_bar.setAttribute("_attr", "start");
+                        }
+
+                        //
+                        else if (_loading >= 0.05 && _loading < 0.9)
+                        {
+                                _loading_status.innerHTML = "loading.." + _value.toFixed(2).toString();
+                                _loading_bar.setAttribute("_attr", "load");
+                        }
+
+                        else if (_loading == 0.9)
+                        {
+                                _loading_status.innerHTML = "extracting.";
+                                _animate.onfinish = function()
+                                {
+                                        _loading_bar.setAttribute("_attr", "done")
+                                        _loading_status.innerHTML = "extracting..";
+                                }
+
+
+
                         }
 
 
-                        if (v < 4)
+
+                        if (_loading == 1)
                         {
-                                var str = "preparing";
-                                var num_of_dots = index_ % 4 + 1;
-                                for (var i = 0; i < num_of_dots; i += 1)
-                                        str += ".";
-                                _BOX_0_0_1_0.innerHTML = str;
-                                index_ += 1;
+                                let _loading_background = document.querySelector("._BOX_0");
+                                let _loading_holder = document.querySelector("._BOX_0_0");
 
-                                _BOX_0_0_0_0.setAttribute("_attr", "start");
-                        }
-                        else if (v >= 5 && v <= 100)
-                        {
-                                var str = "loading";
-                                if (value_ > 0.2) str += ".";
-                                if (value_ > 0.5) str += ".";
-                                if (value_ > 0.8) str += ".";
-
-                                str += "\n";
-                                str += "(";
-
-                                var v1 = (v * 0.01).toFixed(2);
-                                str += v1;
-                                str += "/1.00";
-                                str += ")";
-
-                                _BOX_0_0_1_0.innerHTML = str;
-                                _BOX_0_0_0_0.setAttribute("_attr", "load");
+                                _loading_background.style.display = "none";
 
                         }
 
