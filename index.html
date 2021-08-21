@@ -60,7 +60,7 @@
                         position: absolute;
                         width: 100vw;
                         height: 100vh;
-                        background-color: rgba(0, 0, 0, 0.3);
+                        background-color: rgba(0, 0, 0, 0.6);
 
                         margin: 0px;
                         padding: 0px;
@@ -79,6 +79,9 @@
                         --c: #ddd;
                         --d: #444;
                         --e: #eee;
+
+                        /**/
+                        overflow: hidden;
                 }
 
                 ._BOX_0_0
@@ -94,7 +97,7 @@
                         justify-content: center;
                         flex-direction: column;
 
-                        transform: translate(0px, -20%);
+                        transform: translate(0px, -60%);
                 }
 
 
@@ -217,36 +220,19 @@
         </div>
 
         <script type="text/javascript">
-                function INITIALIZE()
-                {
-                        _loading_bar = document.querySelector("._BOX_0_0_0_0");
-                        _loading_status = document.querySelector("._BOX_0_0_1_0");
-
-                        _loading_bar.style.width = "1px";
-                        _loading_status.innerHTML = "preparing";
-                        //_a_track_0 = 0;
-                        //_wait_till_loading_0 = 0;
-                        wait_till_loading();
-
-                }
-
                 let _loading_bar;
                 let _loading_status;
 
 
-                let _loading;
                 let _value;
 
-                let _animate;
-                let new_animate;
-                //INITIALIZE();
-
-
                 let start = true;
+                let stop_loading = false;
+
+                let _animate;
 
                 function _LOADING_(x)
                 {
-                        let _value = x;
                         if (start)
                         {
                                 _loading_bar = document.querySelector("._BOX_0_0_0_0");
@@ -254,260 +240,124 @@
                                 start = false;
                         }
 
-                        _loading_bar.animate(
-                                [
-                                        // keyframes
-                                        {
-                                                width: _loading_bar.style.width
-                                        },
-                                        {
-                                                width: (_value * 100).toString() + "%"
-                                        }
-                                ],
-                                {
-                                        // timing options
-                                        fill: 'forwards',
-                                        duration: 900,
-
-                                }
-                        );
-                }
-
-
-
-
-
-
-                function _LOADING_1(x)
-                {
-                        _loading = x;
-
-                        _value = (_loading - 0) / (0.9 - 0);
-                        if (_value > 1.0)
-                        {
-                                _value = 1.0;
-                        }
-
-                        _animate = _loading_bar.animate(
-                                [
-                                        // keyframes
-                                        {
-                                                width: _loading_bar.style.width
-                                        },
-                                        {
-                                                width: (_value * 100).toString() + "%"
-                                        }
-                                ],
-                                {
-                                        // timing options
-                                        fill: 'forwards',
-                                        duration: 900,
-                                        easing: 'ease-in-out',
-
-                                }
-                        );
-
-
-
-                        //
-                        if (_loading < 0.05)
-                        {
-                                _loading_status.innerHTML = "preparing..";
-                                _loading_bar.setAttribute("_attr", "start");
-                        }
-
-                        //
-                        else if (_loading >= 0.05 && _loading < 0.9)
-                        {
-                                _loading_status.innerHTML = "loading.." + _value.toFixed(2).toString();
-                                _loading_bar.setAttribute("_attr", "load");
-                        }
-
-                        else if (_loading == 0.9)
-                        {
-                                _loading_status.innerHTML = "extracting.";
-                                _animate.onfinish = function()
-                                {
-                                        _loading_bar.setAttribute("_attr", "done")
-                                        _loading_status.innerHTML = "extracting..";
-                                }
-
-
-
-                        }
-
-
-
-                        if (_loading == 1)
-                        {
-                                let _loading_background = document.querySelector("._BOX_0");
-                                let _loading_holder = document.querySelector("._BOX_0_0");
-
-                                _loading_background.style.display = "none";
-
-                        }
-
-
-                }
-
-
-
-
-
-
-
-
-
-                function wait_till_loading()
-                {
-
-                        if (_loading == null)
-                        {
-                                requestAnimationFrame(wait_till_loading);
-                        }
-                        else
-                        {
-                                //_A();
-                        }
-                }
-
-
-
-
-
-
-
-                function _A()
-                {
-                        let str = _a_track_0.toString();
-
-
-                        _loading_status.innerHTML = str;
-                        _a_track_0 += 1;
-
-
-
-                        if (_loading < 0.1)
-                        {
-                                requestAnimationFrame(_A);
-                        }
-                        else
-                        {
-                                console.log("_A // " + _a_track_0);
-
-                                _b_0 = _loading;
-                                _b_1 = 0.89;
-                                _b_loading_prev = _loading;
-                                _b_t = 0;
-                                _b_width = 0;
-
-                                _b_start_at = 0;
-                                /*
-                                console.log(_b_0);
-                                console.log(_b_1);
-                                console.log(_b_loading_prev);
-                                */
-                                _B();
-                                return;
-                        }
-                }
-
-
-
-
-
-                function _B()
-                {
-                        let _parameter = (_b_loading_prev - _b_0) * 1.0 / (_b_1 - _b_0);
-                        console.log(_parameter);
-                        let _b_width = _b_start_at + (_parameter - _b_start_at) * _b_t;
-
-                        //
-                        let str = (_b_width * 100).toString();
-                        str += "%";
-                        _loading_bar.style.width = str;
-                        //
-
-                        _b_t += 1.0 / 40;
-                        if (_b_t > 1.0) _b_t = 1.0;
-
-
-
-                        if (_loading != _b_loading_prev)
-                        {
-                                _b_t = 0;
-                                _b_start_at = _b_width;
-                                _b_loading_prev = _loading;
-
-                        }
-
-                        if (_loading < 0.9)
-                        {
-                                requestAnimationFrame(_B);
-                        }
-                        else
-                        {
-
-
-                        }
-
-                }
-
-
-
-
-                let _wait_till_loading_0;
-                let _a_track_0;
-                let _b_0;
-                let _b_1;
-                let _b_loading_prev;
-                let _b_t;
-                //INITIALIZE();
-
-
-
-
-
-
-                /*
-                function _progress_(x)
-                {
-
-                        let _load = Math.floor(x * 100).toString() + "%";
 
                         if (x == 1)
                         {
-                                document.querySelector("._BOX_0_0_0_0").style.width =
-                                        (x * 100).toString() + "%";
-                                document.querySelector("._BOX_0_0_0_0").setAttribute("_attr", _load);
 
-                                document.querySelector("._BOX_0_0_1_0").innerHTML =
-                                        "loading... " + x.toFixed(2).toString();
+                                let _BOX_0 = document.querySelector("._BOX_0");
+                                let _BOX_0_0 = document.querySelector("._BOX_0_0");
+
+                                let animate_1 = _BOX_0_0.animate(
+                                        [
+                                                // keyframes
+                                                {
+                                                        transform: "translate(0px, -60%);"
+                                                },
+                                                {
+                                                        transform: "translate(0px , 500px)"
+                                                }
+                                        ],
+                                        {
+                                                // timing options
+                                                fill: "forwards",
+                                                duration: 500,
+                                                easing: "cubic-bezier(0.5, -0.4, 1, 1)"
+                                        }
+                                );
 
 
+                                animate_1 = _BOX_0.animate(
+                                        [
+                                                {
+                                                        backgroundColor: "rgba(0,0,0,0.7)"
+                                                },
+                                                {
+                                                        backgroundColor: "rgba(0,0,0,0.0)"
+                                                }
 
+                                        ],
+                                        {
+                                                // timing options
+                                                fill: "forwards",
+                                                duration: 600,
+                                                easing: "cubic-bezier(0.7, 0, 1, 1)"
+                                        }
 
-                                setTimeout(function()
+                                )
+
+                                animate_1.onfinish = function()
                                 {
-                                        document.querySelector("._BOX_0").style.display = "none";
-                                }, 50);
-
-                                //
-
+                                        _BOX_0.style.display = "none";
+                                }
 
                         }
-                        else
+                        //
+
+
+                        let _value = x / 0.85;
+                        if (_value > 1.0)
                         {
-                                document.querySelector("._BOX_0_0_0_0").style.width = (x * 100).toString() + "%";
-                                document.querySelector("._BOX_0_0_0_0").setAttribute("_attr", _load);
+                                _animate = _loading_bar.animate(
+                                        [
+                                                // keyframes
+                                                {
+                                                        width: _loading_bar.style.width
+                                                },
+                                                {
+                                                        width: "100%"
+                                                }
+                                        ],
+                                        {
+                                                // timing options
+                                                fill: "forwards",
+                                                duration: 500,
+                                                easing: "ease-in-out",
+                                        }
+                                );
 
 
-                                document.querySelector("._BOX_0_0_1_0").innerHTML =
-                                        "loading... " + x.toFixed(2).toString();
+                                _value = 1.0;
 
+                                _loading_status.innerHTML = "loading.. " + _value.toFixed(2).toString() + "/" + "1.00";
+                                _loading_bar.setAttribute("_attr", Math.round(_value * 100).toString() + "%");
+
+                                stop_loading = true;
                         }
+
+
+
+
+
+
+                        //
+                        if (!stop_loading)
+                        {
+                                _loading_status.innerHTML = "loading.. " + _value.toFixed(2).toString() + "/" + "1.00";
+                                _loading_bar.setAttribute("_attr", Math.round(_value * 100).toString() + "%");
+
+                                _loading_bar.animate(
+                                        [
+                                                // keyframes
+                                                {
+                                                        width: _loading_bar.style.width
+                                                },
+                                                {
+                                                        width: (_value * 100).toString() + "%"
+                                                }
+                                        ],
+                                        {
+                                                // timing options
+                                                fill: "forwards",
+                                                duration: 900,
+
+                                        }
+                                );
+                        }
+                        //
+
+
+
                 }
-*/
 
         </script>
 </body>
