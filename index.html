@@ -244,7 +244,6 @@
 
                 function wait_till_loading()
                 {
-
                         _wait_till_loading_0 += 1;
 
                         if (_loading == null)
@@ -287,11 +286,15 @@
                                 _b_0 = _loading;
                                 _b_1 = 0.89;
                                 _b_loading_prev = _loading;
+                                _b_t = 0;
+                                _b_width = 0;
 
-
+                                _b_start_at = 0;
+                                /*
                                 console.log(_b_0);
                                 console.log(_b_1);
                                 console.log(_b_loading_prev);
+                                */
                                 _B();
                                 return;
                         }
@@ -303,8 +306,28 @@
 
                 function _B()
                 {
+                        let _parameter = (_b_loading_prev - _b_0) * 1.0 / (_b_1 - _b_0);
+                        console.log(_parameter);
+                        let _b_width = _b_start_at + (_parameter - _b_start_at) * _b_t;
+
+                        //
+                        let str = (_b_width * 100).toString();
+                        str += "%";
+                        _loading_bar.style.width = str;
+                        //
+
+                        _b_t += 1.0 / 30;
+                        if (_b_t > 1.0) _b_t = 1.0;
 
 
+
+                        if (_loading != _b_loading_prev)
+                        {
+                                _b_t = 0;
+                                _b_start_at = _b_width;
+                                _b_loading_prev = _loading;
+
+                        }
 
                         if (_loading < 0.9)
                         {
@@ -326,6 +349,7 @@
                 let _b_0;
                 let _b_1;
                 let _b_loading_prev;
+                let _b_t;
                 INITIALIZE();
 
 
