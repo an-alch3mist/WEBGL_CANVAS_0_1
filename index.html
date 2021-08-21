@@ -226,7 +226,7 @@
                         _loading_status.innerHTML = "preparing";
                         //_a_track_0 = 0;
                         //_wait_till_loading_0 = 0;
-                        wait_till_loading();
+                        //wait_till_loading();
 
                 }
 
@@ -247,7 +247,7 @@
                 {
                         _loading = x;
 
-                        _value = (_loading - 0) / (0.9 - 0);
+                        _value = _loading / 0.9;
                         if (_value > 1.0)
                         {
                                 _value = 1.0;
@@ -265,9 +265,9 @@
                                 ],
                                 {
                                         // timing options
-                                        fill: 'forwards',
+                                        fill: "forwards",
                                         duration: 900,
-                                        easing: 'ease-in-out',
+                                        //  easing: "ease-in-out",
 
                                 }
                         );
