@@ -252,14 +252,14 @@
                         {
                                 _loading_bar.style.width = "2px";
                                 _loading_status.innerHTML = "preparing..";
-                                _loading_bar.setAttribute("_attr", "initializing");
+                                _loading_bar.setAttribute("_attr", "start");
                         }
 
                         //
-                        else if (_loading >= 0.1 && _loading <= 0.89)
+                        else if (_loading >= 0.1 && _loading <= 0.9)
                         {
 
-                                _value = (_loading - 0.1) / (0.89 - 0.1);
+                                _value = (_loading - 0.1) / (0.9 - 0.1);
                                 if (_value > 1.0)
                                 {
                                         _value = 1.0;
@@ -288,10 +288,14 @@
                                 //console.log(_loading_bar.clientWidth + "px");
                                 //console.log(_loading_bar.clientWidth / _loading_bar.parentNode.parentElement.clientWidth * 100 + "%");
                                 _loading_status.innerHTML = "loading... " + _value.toFixed(2);
-                                _loading_bar.setAttribute("_attr", Math.floor(_value * 5 + 1) + "/" + "5");
+                                _animate.onfinish = function()
+                                {
+
+                                        _loading_bar.setAttribute("_attr", Math.round(_value * 5) + "/" + "5");
+                                }
 
                         }
-                        else if (_loading > 0.89 && _loading < 1.5)
+                        else if (_loading > 0.9 && _loading < 1.5)
                         {
                                 _animate.onfinish = function()
                                 {
