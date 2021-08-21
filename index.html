@@ -226,17 +226,22 @@
                         _loading_status.innerHTML = "preparing";
                         //_a_track_0 = 0;
                         //_wait_till_loading_0 = 0;
-                        //wait_till_loading();
+                        wait_till_loading();
 
                 }
 
                 let _loading_bar;
                 let _loading_status;
-                INITIALIZE();
 
 
                 let _loading;
                 let _value;
+
+                let _animate;
+                let new_animate;
+                INITIALIZE();
+
+
 
                 function _LOADING_(x)
                 {
@@ -247,7 +252,7 @@
                         {
                                 _loading_bar.style.width = "2px";
                                 _loading_status.innerHTML = "preparing..";
-                                _loading_bar.setAttribute("_attr", "yeah...");
+                                _loading_bar.setAttribute("_attr", "initializing");
                         }
 
                         //
@@ -260,7 +265,7 @@
                                         _value = 1.0;
                                 }
 
-                                _loading_bar.animate(
+                                _animate = _loading_bar.animate(
                                         [
                                                 // keyframes
                                                 {
@@ -283,33 +288,41 @@
                                 //console.log(_loading_bar.clientWidth + "px");
                                 //console.log(_loading_bar.clientWidth / _loading_bar.parentNode.parentElement.clientWidth * 100 + "%");
                                 _loading_status.innerHTML = "loading... " + _value.toFixed(2);
-                                _loading_bar.setAttribute("_attr", Math.floor(_value * 100) + "%");
+                                _loading_bar.setAttribute("_attr", Math.floor(_value * 5 + 1) + "/" + "5");
 
                         }
                         else if (_loading > 0.89 && _loading < 1.5)
                         {
-                                _loading_bar.animate(
-                                        [
-                                                // keyframes
+                                _animate.onfinish = function()
+                                {
+                                        new_animate = _loading_bar.animate(
+                                                [
+                                                        // keyframes
+                                                        {
+                                                                width: _loading_bar.getBoundingClientRect().width + "px"
+                                                        },
+                                                        {
+                                                                width: 100 + "%"
+                                                        }
+                                                ],
                                                 {
-                                                        width: _loading_bar.getBoundingClientRect().width + "px"
-                                                },
-                                                {
-                                                        width: "100%"
+                                                        // timing options
+                                                        fill: 'forwards',
+                                                        duration: 900,
+                                                        easing: 'ease-in-out',
+                                                        iterations: 1
                                                 }
-                                        ],
+                                        );
+                                        new_animate.onfinish = function()
                                         {
-                                                // timing options
-                                                fill: 'forwards',
-                                                duration: 600,
-                                                easing: 'ease-in-out',
-                                                iterations: 1
+                                                _loading_bar.setAttribute("_attr", "done..");
+
                                         }
-                                );
+                                }
 
 
                                 _loading_status.innerHTML = "extracting.";
-                                _loading_bar.setAttribute("_attr", "done!");
+
                         }
 
 
@@ -326,20 +339,16 @@
 
                 function wait_till_loading()
                 {
-                        _wait_till_loading_0 += 1;
 
                         if (_loading == null)
                         {
-                                _loading_status.innerHTML = _wait_till_loading_0.toString();
                                 requestAnimationFrame(wait_till_loading);
                         }
                         else
                         {
-                                _A();
+                                //_A();
                         }
                 }
-
-
 
 
 
