@@ -236,15 +236,20 @@
                         _loading_status = document.querySelector("._BOX_0_0_1_0");
 
                         _a_track_0 = 0;
+                        _wait_till_loading_0 = 0;
                         wait_till_loading();
 
                 }
 
+
                 function wait_till_loading()
                 {
 
+                        _wait_till_loading_0 += 1;
+
                         if (_loading == null)
                         {
+                                _loading_status.innerHTML = _wait_till_loading_0.toString();
                                 requestAnimationFrame(wait_till_loading);
                         }
                         else
@@ -256,10 +261,6 @@
 
 
 
-
-                let _a_track_0;
-
-                INITIALIZE();
 
 
 
@@ -287,6 +288,10 @@
                                 _b_1 = 0.89;
                                 _b_loading_prev = _loading;
 
+
+                                console.log(_b_0);
+                                console.log(_b_1);
+                                console.log(_b_loading_prev);
                                 _B();
                                 return;
                         }
@@ -294,9 +299,7 @@
 
 
 
-                let _b_0;
-                let _b_1;
-                let _b_loading_prev;
+
 
                 function _B()
                 {
@@ -314,6 +317,18 @@
                         }
 
                 }
+
+
+
+
+                let _wait_till_loading_0;
+                let _a_track_0;
+                let _b_0;
+                let _b_1;
+                let _b_loading_prev;
+                INITIALIZE();
+
+
 
 
 
