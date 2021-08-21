@@ -30,7 +30,7 @@ function UnityProgress(gameInstance, progress)
       }
 
       //
-      _progress_(progress);
+      _LOADING_(progress);
       //
 
 
