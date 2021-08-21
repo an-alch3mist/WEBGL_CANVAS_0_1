@@ -255,6 +255,10 @@
                         {
 
                                 _value = (_loading - 0.1) / (0.89 - 0.1);
+                                if (_value > 1.0)
+                                {
+                                        _value = 1.0;
+                                }
 
                                 _loading_bar.animate(
                                         [
