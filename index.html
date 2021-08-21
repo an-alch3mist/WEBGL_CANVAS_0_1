@@ -217,6 +217,108 @@
         </div>
 
         <script type="text/javascript">
+                let _loading;
+
+                function _LOADING_(x)
+                {
+                        _loading = x;
+                }
+
+
+
+                let _loading_bar;
+                let _loading_status;
+
+
+                function INITIALIZE()
+                {
+                        _loading_bar = document.querySelector("._BOX_0_0_0_0");
+                        _loading_status = document.querySelector("._BOX_0_0_1_0");
+
+                        _a_track_0 = 0;
+                        wait_till_loading();
+
+                }
+
+                function wait_till_loading()
+                {
+
+                        if (_loading == null)
+                        {
+                                requestAnimationFrame(wait_till_loading);
+                        }
+                        else
+                        {
+                                _A();
+                        }
+                }
+
+
+
+
+
+                let _a_track_0;
+
+                INITIALIZE();
+
+
+
+
+
+                function _A()
+                {
+                        let str = _a_track_0.toString();
+
+
+                        _loading_status.innerHTML = str;
+                        _a_track_0 += 1;
+
+
+
+                        if (_loading < 0.1)
+                        {
+                                requestAnimationFrame(_A);
+                        }
+                        else
+                        {
+                                console.log("_A // " + _a_track_0);
+
+                                _b_0 = _loading;
+                                _b_1 = 0.89;
+                                _b_loading_prev = _loading;
+
+                                _B();
+                                return;
+                        }
+                }
+
+
+
+                let _b_0;
+                let _b_1;
+                let _b_loading_prev;
+
+                function _B()
+                {
+i
+
+
+                        if (_loading < 0.9)
+                        {
+                                requestAnimationFrame(_B);
+                        }
+                        else
+                        {
+
+
+                        }
+
+                }
+
+
+
+
+                /*
                 function _progress_(x)
                 {
 
@@ -248,11 +350,13 @@
                                 document.querySelector("._BOX_0_0_0_0").style.width = (x * 100).toString() + "%";
                                 document.querySelector("._BOX_0_0_0_0").setAttribute("_attr", _load);
 
+
                                 document.querySelector("._BOX_0_0_1_0").innerHTML =
                                         "loading... " + x.toFixed(2).toString();
 
                         }
                 }
+*/
 
         </script>
 </body>
