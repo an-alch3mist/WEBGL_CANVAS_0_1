@@ -277,7 +277,6 @@
                         //
                         if (_loading < 0.05)
                         {
-                                _loading_bar.style.width = "2px";
                                 _loading_status.innerHTML = "preparing..";
                                 _loading_bar.setAttribute("_attr", "start");
                         }
@@ -285,54 +284,19 @@
                         //
                         else if (_loading >= 0.05 && _loading < 0.9)
                         {
-
-
-
-
-                                //console.log(_loading_bar.clientWidth + "px");
-                                //console.log(_loading_bar.clientWidth / _loading_bar.parentNode.parentElement.clientWidth * 100 + "%");
-                                _loading_status.innerHTML = "loading... " + _value.toFixed(2);
-                                _animate.onfinish = function()
-                                {
-
-                                        _loading_bar.setAttribute("_attr", Math.round(_value * 5) + "/" + "5");
-                                }
-
+                                _loading_status.innerHTML = "loading.." + _value.toString();
+                                _loading_bar.setAttribute("_attr", "load");
                         }
 
-
-                        if (_loading == 0.9)
+                        else if (_loading == 0.9)
                         {
+                                _loading_status.innerHTML = "extracting.";
                                 _animate.onfinish = function()
                                 {
-                                        _loading_bar.setAttribute("_attr", Math.round(_value * 5) + "/" + "5");
-                                        new_animate = _loading_bar.animate(
-                                                [
-                                                        // keyframes
-                                                        {
-                                                                width: _loading_bar.getBoundingClientRect().width + "px"
-                                                        },
-                                                        {
-                                                                width: 100 + "%"
-                                                        }
-                                                ],
-                                                {
-                                                        // timing options
-                                                        fill: 'forwards',
-                                                        duration: 700,
-                                                        easing: 'ease-in-out',
-                                                        iterations: 1
-                                                }
-                                        );
-                                        new_animate.onfinish = function()
-                                        {
-                                                _loading_bar.setAttribute("_attr", "done..");
-
-                                        }
+                                        _loading_bar.setAttribute("_attr", "done")
                                 }
 
 
-                                _loading_status.innerHTML = "extracting.";
 
                         }
 
