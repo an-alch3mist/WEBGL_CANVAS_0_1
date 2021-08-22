@@ -174,9 +174,9 @@
                            _value = 1.0;
 
                            _loading_status.innerHTML =
-                           "loading.. " + _value.toFixed(2).toString() + "/" + "1.00";
+                              "loading.. " + _value.toFixed(2).toString() + "/" + "1.00";
                            _loading_bar.setAttribute(
-                           "_attr", Math.round(_value * 100).toString() + "%");
+                              "_attr", Math.round(_value * 100).toString() + "%");
 
 
                            _animate.onfinish = function()
