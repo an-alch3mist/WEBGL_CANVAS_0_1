@@ -502,12 +502,13 @@ function UnityProgress(gameInstance, progress)
 ![alt_txt](WEBGL_CANVAS_0_1_LOADING.PNG)
 
 ```css
+
                 ._BOX_0
                 {
                         position: absolute;
                         width: 100vw;
                         height: 100vh;
-                        background-color: rgba(0, 0, 0, 0.3);
+                        background-color: rgba(0, 0, 0, 0.8);
 
                         margin: 0px;
                         padding: 0px;
@@ -526,6 +527,9 @@ function UnityProgress(gameInstance, progress)
                         --c: #ddd;
                         --d: #444;
                         --e: #eee;
+
+                        /**/
+                        overflow: hidden;
                 }
 
                 ._BOX_0_0
@@ -541,7 +545,7 @@ function UnityProgress(gameInstance, progress)
                         justify-content: center;
                         flex-direction: column;
 
-                        transform: translate(0px, -20%);
+                        transform: translate(0px, -60%);
                 }
 
 
@@ -559,20 +563,18 @@ function UnityProgress(gameInstance, progress)
                 ._BOX_0_0_0_0
                 {
                         height: 100%;
-                        width: 20%;
+                        width: 0%;
                         background-color: var(--c);
 
                         /*
                         --_a: hsla(120, 00%, 100%, 1);
                         --_b: hsla(360, 50%, 50%, 1);
                         background: repeating-linear-gradient
-                        (
-                        -45deg,
+                        (-45deg,
                         var(--_a) 0,
                         var(--_a) 5px,
                         var(--_b) 5px,
-                        var(--_b) 12px
-                        );
+                        var(--_b) 12px);
                         */
                         border-right: 2px solid #eee;
                         position: relative;
@@ -591,10 +593,10 @@ function UnityProgress(gameInstance, progress)
                         top: 0px;
                         transform: translate(0px, calc(-100% - 2px));
 
-                        padding: 1px 2px;
+                        padding: 1px 3px;
                         margin: 0px;
 
-                        font-family: monospace;
+                        font-family: consolas;
                         font-weight: bold;
                         font-size: 0.7rem;
                         text-align: center;
