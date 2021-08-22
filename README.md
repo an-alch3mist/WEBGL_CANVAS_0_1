@@ -97,10 +97,12 @@
                            [
                                    // keyframes
                                    {
-                                           transform: "translate(0px , -60%) scale(100%)"
+                                           transform: 
+                                              "translate(0px , -60%) scale(100%)"
                                    },
                                    {
-                                           transform: "translate(0 , calc(-60% + 600px)) scale(100%)",
+                                           transform: 
+                                              "translate(0 , calc(-60% + 600px)) scale(100%)",
                                            opacity: 1
                                    }
                            ],
@@ -171,8 +173,10 @@
 
                            _value = 1.0;
 
-                           _loading_status.innerHTML = "loading.. " + _value.toFixed(2).toString() + "/" + "1.00";
-                           _loading_bar.setAttribute("_attr", Math.round(_value * 100).toString() + "%");
+                           _loading_status.innerHTML =
+                           "loading.. " + _value.toFixed(2).toString() + "/" + "1.00";
+                           _loading_bar.setAttribute(
+                           "_attr", Math.round(_value * 100).toString() + "%");
 
 
                            _animate.onfinish = function()
@@ -190,8 +194,10 @@
            //
            if (!stop_loading)
            {
-                   _loading_status.innerHTML = "loading.. " + _value.toFixed(2).toString() + "/" + "1.00";
-                   _loading_bar.setAttribute("_attr", Math.round(_value * 100).toString() + "%");
+                   _loading_status.innerHTML =
+                          "loading.. " + _value.toFixed(2).toString() + "/" + "1.00";
+                   _loading_bar.setAttribute(
+                          "_attr", Math.round(_value * 100).toString() + "%");
 
                    _loading_bar.animate(
                            [
@@ -354,6 +360,7 @@
 
 <br>
 <h3>_LOADING_TEMPLATE_2</h3>
+
 ```js
    let _loading_bar;
    let _loading_status;
