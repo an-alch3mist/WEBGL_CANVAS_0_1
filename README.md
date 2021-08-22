@@ -221,7 +221,9 @@
 
 <br>
 <h3>_LOADING_TEMPLATE_1</h3>
+
 ```js
+
    let _loading_bar;
    let _loading_status;
 
