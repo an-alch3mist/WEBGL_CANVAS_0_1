@@ -57,38 +57,165 @@
 <br>
 <br>
 
+
+
+<h1>_LOADING_<h1>
+<br>
+  
+<h3>_LOADING_TEMPLATE_0<h3>
+  
 ```js
-        function _progress_(x)
-        {
-                let _load = Math.floor(x * 100).toString() + "%";
-                if (x == 1)
-                {
-                        document.querySelector("._BOX_0_0_0_0").style.width = 
-                           (x * 100).toString() + "%";
-                        document.querySelector("._BOX_0_0_0_0").setAttribute(
-                           "_attr", _load);
-                        document.querySelector("._BOX_0_0_1_0").innerHTML = 
-                           "loading... " + x.toFixed(2).toString();
-                        
-                        
-                        setTimeout(function()
-                        {
-                                document.querySelector("._BOX_0").style.display = "none";
-                        }, 50);
-                        //
-                }
-                else
-                {
-                        document.querySelector("._BOX_0_0_0_0").style.width = 
-                           (x * 100).toString() + "%";
-                        document.querySelector("._BOX_0_0_0_0").setAttribute(
-                           "_attr", _load);
-                        document.querySelector("._BOX_0_0_1_0").innerHTML = 
-                           "loading... " + x.toFixed(2).toString();
-                        
-                        
-                }
-        }
+  
+   let _loading_bar;
+   let _loading_status;
+
+
+   let start = true;
+   let stop_loading = false;
+  
+     function _LOADING_(x)
+   {
+           if (start)
+           {
+                   _loading_bar = document.querySelector("._BOX_0_0_0_0");
+                   _loading_status = document.querySelector("._BOX_0_0_1_0");
+
+
+                   start = false;
+           }
+
+
+
+           if (x == 1)
+           {
+
+                   let _BOX_0 = document.querySelector("._BOX_0");
+                   let _BOX_0_0 = document.querySelector("._BOX_0_0");
+
+
+                   let animate_1 = _BOX_0_0.animate(
+                           [
+                                   // keyframes
+                                   {
+                                           transform: "translate(0px , -60%) scale(100%)"
+                                   },
+                                   {
+                                           transform: "translate(0 , calc(-60% + 600px)) scale(100%)",
+                                           opacity: 1
+                                   }
+                           ],
+                           {
+                                   // timing options
+                                   delay: 60,
+                                   fill: "forwards",
+                                   duration: 800,
+                                   easing: "cubic-bezier(0.7, 0, 1, 1)"
+                           }
+                   );
+
+
+                   animate_1 = _BOX_0.animate(
+                           [
+                                   {
+                                           backgroundColor: "rgba(0,0,0,0.9)"
+                                   },
+                                   {
+                                           backgroundColor: "rgba(0,0,0,0.0)"
+                                   }
+
+                           ],
+                           {
+                                   // timing options
+                                   fill: "forwards",
+                                   duration: 1200,
+                                   easing: "cubic-bezier(0.9, 0, 1, 1)"
+                           }
+
+                   )
+
+                   animate_1.onfinish = function()
+                   {
+                           _BOX_0.style.display = "none";
+                   }
+
+           }
+           //
+
+
+
+           let _value = x / 0.85;
+           if (_value > 1.0)
+           {
+                   // stop_loading
+                   if (!stop_loading)
+                   {
+
+                           let _animate = _loading_bar.animate(
+                                   [
+                                           // keyframes
+                                           {
+                                                   width: _loading_bar.style.width
+                                           },
+                                           {
+                                                   width: "100%"
+                                           }
+                                   ],
+                                   {
+                                           // timing options
+                                           fill: "forwards",
+                                           duration: 400,
+                                           easing: "ease-in-out",
+                                   }
+                           );
+
+
+                           _value = 1.0;
+
+                           _loading_status.innerHTML = "loading.. " + _value.toFixed(2).toString() + "/" + "1.00";
+                           _loading_bar.setAttribute("_attr", Math.round(_value * 100).toString() + "%");
+
+
+                           _animate.onfinish = function()
+                           {
+                                   _loading_status.innerHTML = "extracting.. ";
+                           }
+
+                           stop_loading = true;
+                   }
+                   //
+
+           }
+
+
+           //
+           if (!stop_loading)
+           {
+                   _loading_status.innerHTML = "loading.. " + _value.toFixed(2).toString() + "/" + "1.00";
+                   _loading_bar.setAttribute("_attr", Math.round(_value * 100).toString() + "%");
+
+                   _loading_bar.animate(
+                           [
+                                   // keyframes
+                                   {
+                                           width: _loading_bar.style.width
+                                   },
+                                   {
+                                           width: (_value * 100).toString() + "%"
+                                   }
+                           ],
+                           {
+                                   // timing options
+                                   fill: "forwards",
+                                   duration: 900,
+
+                           }
+                   );
+           }
+           //
+
+
+   }
+
 
 ```
 
@@ -140,7 +267,7 @@ function UnityProgress(gameInstance, progress)
 
 
       //.......................
-      _progress_(progress);
+      _LOADING_(progress);
       //.......................
 
 
